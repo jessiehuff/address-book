@@ -30,7 +30,6 @@ function loadPeople(element,id){
       peopleforEach(people => {
         let 
       })
-      })
     }
   })
 }
