@@ -1,21 +1,12 @@
-// if (jQuery) {
-//   alert("jquery is loaded"); 
-// } else {
-//   alert("Not loaded"); 
-// }
-
 $(document).ready(function() {
+  loadPeople(this)
   attachProjectListeners()
 })
 
 function attachProjectListeners() {
-  console.log("First")
   $('.app-directory-item').on('click', function(e){
     e.preventDefault()
-    console.log(this)
-    console.log("Here")
-    loadPeople(this)
-    console.log("Now Here")
+    loadPerson(this)
   })
 }
 
@@ -25,7 +16,25 @@ function loadPeople(element){
     dataType: 'json', 
     url: '/api/people', 
     success: function(resp, status, xhr){
-    console.log(element) 
+      var allPeople = resp.people.map(x => x.name)
+      // debugger 
+      allPeople.forEach(function(x) {
+        $('.app-directory-item').append(x)
+      })
+
+      // $('.app-directory-item').html(allPeople.map(x => $))
+    }
+  })
+}
+
+function loadPerson(element){
+  $.ajax({
+    method: 'GET', 
+    dataType: 'json', 
+    url: '/api/people', 
+    success: function(resp, status, xhr){
+      $('.person-name').html(JSON.stringify(resp.people[2].name).replace(/"/g,""))
+    
     }
     // if (people.length === 0) {
     //   let $header = $('.app-directory-item')
@@ -38,12 +47,3 @@ function loadPeople(element){
       // })
   }) 
 }
-
-// function People(people) {
-//   this.id = people.id 
-//   this.name = people.name 
-//   this.title 
-//   this.phone 
-//   this.email
-//   this.education
-// }
