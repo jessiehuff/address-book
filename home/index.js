@@ -1,11 +1,13 @@
 $(document).ready(function() {
   loadPeople(this)
+  loadPerson(0)
 })
 
 function attachProjectListeners() {
   $('.app-directory-item').on('click', function(e){
+    var selection = $(e.target).data('id')
     e.preventDefault()
-    loadPerson(this)
+    loadPerson(selection)
   })
 }
 
@@ -15,32 +17,32 @@ function loadPeople(element){
     dataType: 'json', 
     url: '/api/people', 
     success: function(resp, status, xhr){
-      var allPeople = resp.people.map(x => x.name).sort()
+      var allPeople = resp.people.sort(function (a,b) {
+        if(a.name < b.name) return -1; 
+        else if (a.name > b.name) return 1; 
+        else return 0; 
+      }); 
+      var letterHeading = null 
       allPeople.forEach(function(x) {
-        $('.app-directory-list').append("<div class='app-directory-item'>" + x + "</div>")
+        if (x.name.charAt(0) !== letterHeading){
+          letterHeading = x.name.charAt(0) 
+          $('.app-directory-list').append("<div class='app-directory-separator'>" + letterHeading + "</div>")
+        }
+        $('.app-directory-list').append("<div class='app-directory-item' data-id=" + x.id +">" + x.name + "</div>")
       })
       attachProjectListeners()
     }
   })
 }
 
-function loadPerson(element){
+function loadPerson(id){
   $.ajax({
     method: 'GET', 
     dataType: 'json', 
-    url: '/api/people', 
+    url: '/api/people/'+ id, 
     success: function(resp, status, xhr){
-      $('.person-name').html(JSON.stringify(resp.people[2].name).replace(/"/g,""))
-    
+      console.log(resp)
+      $('.person-name').html(resp.person.name.replace(/"/g,""))
     }
-    // if (people.length === 0) {
-    //   let $header = $('.app-directory-item')
-    //   $header.html('No people')
-    // } else {
-    //   let $header = $('.app-directory-item')
-    //   $header.html('People')
-    //   peopleforEach(people => {
-    //     let 
-      // })
   }) 
 }
