@@ -1,6 +1,5 @@
 $(document).ready(function() {
   loadPeople(this)
-  attachProjectListeners()
 })
 
 function attachProjectListeners() {
@@ -16,13 +15,11 @@ function loadPeople(element){
     dataType: 'json', 
     url: '/api/people', 
     success: function(resp, status, xhr){
-      var allPeople = resp.people.map(x => x.name)
-      // debugger 
+      var allPeople = resp.people.map(x => x.name).sort()
       allPeople.forEach(function(x) {
-        $('.app-directory-item').append(x)
+        $('.app-directory-list').append("<div class='app-directory-item'>" + x + "</div>")
       })
-
-      // $('.app-directory-item').html(allPeople.map(x => $))
+      attachProjectListeners()
     }
   })
 }
