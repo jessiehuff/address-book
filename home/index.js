@@ -42,7 +42,11 @@ function loadPerson(id){
     url: '/api/people/'+ id, 
     success: function(resp, status, xhr){
       console.log(resp)
-      $('.person-name').html(resp.person.name.replace(/"/g,""))
+      $('.person-name').html(resp.person.name)
+      $('.app-person-profile-department').html(resp.person.title)
+      $('.app-person-profile-phone-number').html(resp.person.phone)
+      $('.app-person-profile-email').html(resp.person.email)
+      
     }
   }) 
 }
