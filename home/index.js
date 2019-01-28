@@ -46,7 +46,7 @@ function loadPerson(id){
       $('.app-person-profile-department').html(resp.person.title)
       $('.app-person-profile-phone-number').html(resp.person.phone)
       $('.app-person-profile-email').html(resp.person.email)
-      
+      $('#date-one').html(resp.person.education[0].startYear + ' - ' + resp.person.endYear)
     }
   }) 
 }
