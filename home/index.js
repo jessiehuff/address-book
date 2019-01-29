@@ -50,6 +50,11 @@ function loadPerson(id){
         $('.education-institution').remove()
         $('.education-degree').remove()
       })
+      resp.person.workExperience.forEach(function(work){
+        $('.work-date').remove()
+        $('.app-history-item-corp').remove() 
+        $('.app-history-item-title').remove()
+      })
       resp.person.education.forEach(function(edu) {
         if (edu.endYear !== undefined) {
           $('.wrapper').append("<div class='education-date'>" + edu.startYear + ' - ' + edu.endYear + "</div>")
@@ -58,7 +63,14 @@ function loadPerson(id){
         }
         $('.wrapper').append("<div class='education-institution'>" + edu.institution + "</div> <span class='education-degree'>" + edu.degree + "</span>")
       })
-      
+      resp.person.workExperience.forEach(function(work) {
+        if (work.endYear !== undefined) {
+          $('.work-wrapper').append("<div class='work-date'>" + work.startYear + ' - ' + work.endYear + "</div>")
+        } else { 
+          $('.work-wrapper').append("<div class='work-date'>" + work.startYear + ' - Present' + "</div>")
+        }
+        $('.work-wrapper').append("<div class='app-history-item-corp'>" + work.institution + "</div><span class='app-history-item-title'>" + work.title + "</div>")
+      })
     }
   }) 
 }
