@@ -44,7 +44,7 @@ function loadPerson(id){
       $('.person-name').html(resp.person.name)
       $('.app-person-profile-department').html(resp.person.title)
       $('.app-person-profile-phone-number').html(resp.person.phone)
-      $('.app-person-profile-email').html(resp.person.email)
+      $('.app-person-profile-email').html("<a href='mailto:" + resp.person.email + "'name='emailLink'>" + resp.person.email + "</a>")
       resp.person.education.forEach(function(edu){
         $('.education-date').remove() 
         $('.education-institution').remove()
