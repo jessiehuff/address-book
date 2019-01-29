@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  loadPeople(this)
-  loadPerson(0)
+  loadPeople(this);
+  loadPerson(1);
 })
 
 function attachProjectListeners() {
