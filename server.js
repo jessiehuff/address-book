@@ -9,19 +9,14 @@ const app = express();
 app.get('/api/people/:id', getPersonById);
 app.get('/api/people', getAllPeople);
 app.get('/home', function(request, response){
-    response.sendfile(path.resolve('../home/index.html')); 
+    response.sendfile(path.resolve('./home/index.html')); 
 }) 
 app.get('/style.css', function(request, response){
-    response.sendfile(path.resolve('../home/style.css'));
+    response.sendfile(path.resolve('./home/style.css'));
 })
 app.get('/index.js', function(request, response){
-    response.sendfile(path.resolve('../home/index.js'));
+    response.sendfile(path.resolve('./home/index.js'));
 })
-//what does app.get do/documentation, need it to return an HTML file
-//need to return HTML/CSS file as well as js file for client
-// 1 create page layout;
-// 2 call api/people to get list of all people and build left side list of names with onload
-// 3 js onclicks for names which populate details on right side (re-render?)
 
 const HTTP_PORT = 8080;
 app.listen(HTTP_PORT, function (err) {
