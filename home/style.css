@@ -14,11 +14,6 @@ html, body {
   box-sizing: border-box;
 }
 
-#wrapper {
-  margin: 0 auto;
-  max-width: 900px; 
-}
-
 .app-person-profile h2,
 .app-person-profile h3,
 .app-person-profile h4 {
@@ -112,10 +107,22 @@ html, body {
 }
 
 .education-date {
+  display:inline-block; 
   flex: none;
   padding-right: 20px;
   font-weight: bold;
   width: 125px;
+}
+
+
+.education-institution {
+  font-weight: bold;
+  display: inline-block; 
+}
+
+.education-degree {
+  margin-left: 125px; 
+  padding-bottom: 20px; 
 }
 
 .app-history-item-corp {
@@ -134,8 +141,4 @@ html, body {
 
 .app-history-item-body {
   flex-grow: 1;
-}
-
-.education-institution {
-  font-weight: bold;
 }

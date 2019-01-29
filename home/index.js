@@ -61,7 +61,7 @@ function loadPerson(id){
         } else { 
           $('.wrapper').append("<div class='education-date'>" + edu.startYear + ' - Present' + "</div>")
         }
-        $('.wrapper').append("<div class='education-institution'>" + edu.institution + "</div> <span class='education-degree'>" + edu.degree + "</span>")
+        $('.wrapper').append("<div class='education-institution'>" + edu.institution + "</div> <div class='education-degree'>" + edu.degree + "</div>")
       })
       resp.person.workExperience.forEach(function(work) {
         if (work.endYear !== undefined) {
