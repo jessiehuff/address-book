@@ -14,6 +14,11 @@ html, body {
   box-sizing: border-box;
 }
 
+#wrapper {
+  margin: 0 auto;
+  max-width: 900px; 
+}
+
 .app-person-profile h2,
 .app-person-profile h3,
 .app-person-profile h4 {
@@ -106,7 +111,14 @@ html, body {
   margin-bottom: 10px;
 }
 
-.app-history-item-dates {
+.education-date {
+  flex: none;
+  padding-right: 20px;
+  font-weight: bold;
+  width: 125px;
+}
+
+.app-history-item-dates-work {
   flex: none;
   padding-right: 20px;
   font-weight: bold;
@@ -117,6 +129,6 @@ html, body {
   flex-grow: 1;
 }
 
-.app-history-item-title {
+.education-institution {
   font-weight: bold;
 }

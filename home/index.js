@@ -41,12 +41,24 @@ function loadPerson(id){
     dataType: 'json', 
     url: '/api/people/'+ id, 
     success: function(resp, status, xhr){
-      console.log(resp)
       $('.person-name').html(resp.person.name)
       $('.app-person-profile-department').html(resp.person.title)
       $('.app-person-profile-phone-number').html(resp.person.phone)
       $('.app-person-profile-email').html(resp.person.email)
-      $('#date-one').html(resp.person.education[0].startYear + ' - ' + resp.person.endYear)
+      resp.person.education.forEach(function(edu){
+        $('.education-date').remove() 
+        $('.education-institution').remove()
+        $('.education-degree').remove()
+      })
+      resp.person.education.forEach(function(edu) {
+        if (edu.endYear !== undefined) {
+          $('.wrapper').append("<div class='education-date'>" + edu.startYear + ' - ' + edu.endYear + "</div>")
+        } else { 
+          $('.wrapper').append("<div class='education-date'>" + edu.startYear + ' - Present' + "</div>")
+        }
+        $('.wrapper').append("<div class='education-institution'>" + edu.institution + "</div> <span class='education-degree'>" + edu.degree + "</span>")
+      })
+      
     }
   }) 
 }
