@@ -65,11 +65,12 @@ function loadPerson(id){
       })
       resp.person.workExperience.forEach(function(work) {
         if (work.endYear !== undefined) {
-          $('.work-wrapper').append("<div class='work-date'>" + work.startYear + ' - ' + work.endYear + "</div>")
+          $('.work-wrapper').append("<span class='work-date'>" + work.startYear + ' - ' + work.endYear + "</span>")
         } else { 
-          $('.work-wrapper').append("<div class='work-date'>" + work.startYear + ' - Present' + "</div>")
+          work.endYear = 'Present'
+          $('.work-wrapper').append("<span class='work-date'>" + work.startYear + ' - ' + work.endYear + "</span>")
         }
-        $('.work-wrapper').append("<div class='app-history-item-corp'>" + work.institution + "</div><span class='app-history-item-title'>" + work.title + "</div>")
+        $('.work-wrapper').append("<div class='app-history-item-corp'>" + work.institution + "</div><div class='app-history-item-title'>" + work.title + "</div>")
       })
     }
   }) 
