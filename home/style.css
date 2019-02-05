@@ -87,6 +87,8 @@ html, body {
   border: 2px solid #00f;
   overflow: hidden;
   background-size: contain;
+  background-repeat: no-repeat; 
+  background-position: center; 
 }
 
 .app-person-profile-header {
