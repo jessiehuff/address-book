@@ -41,6 +41,7 @@ function loadPerson(id){
     dataType: 'json', 
     url: '/api/people/'+ id, 
     success: function(resp, status, xhr){
+      console.log(resp.person.photo)
       $('.person-name').html(resp.person.name)
       $('.app-person-profile-department').html(resp.person.title)
       $('.app-person-profile-phone-number').html(resp.person.phone)
