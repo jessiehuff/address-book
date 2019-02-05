@@ -45,6 +45,7 @@ function loadPerson(id){
       $('.app-person-profile-department').html(resp.person.title)
       $('.app-person-profile-phone-number').html(resp.person.phone)
       $('.app-person-profile-email').html("<a href='mailto:" + resp.person.email + "'name='emailLink'>" + resp.person.email + "</a>")
+      $('.app-person-profile-photo').css('background-image','url('+ resp.person.photo + ')')
       resp.person.education.forEach(function(edu){
         $('.education-date').remove() 
         $('.education-institution').remove()
